@@ -1,0 +1,25 @@
+.top-nav {
+  background-color: aqua;
+  display: flex;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    align-content: flex-start;
+    padding: 24px;
+
+    li {
+      margin-right: 16px;
+      font-weight: 500;
+      a {
+        text-decoration: none;
+        color: green;
+      }
+
+      .active-link {
+        color: red;
+      }
+    }
+  }
+}

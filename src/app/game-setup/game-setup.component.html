@@ -1,0 +1,62 @@
+<mat-button-toggle-group
+  name="difficulty"
+  (change)="setDifficulty($event.value)"
+  [value]="selectedOption"
+>
+  <mat-button-toggle disableRipple [value]="1">Easy</mat-button-toggle>
+  <mat-button-toggle disableRipple [value]="2">Medium</mat-button-toggle>
+  <mat-button-toggle disableRipple [value]="3">Hard</mat-button-toggle>
+  <mat-button-toggle disableRipple [value]="4">Custom</mat-button-toggle>
+</mat-button-toggle-group>
+
+<form [formGroup]="settingsForm">
+  <div class="input-container">
+    <label>Width</label>
+    <input
+      required
+      id="width"
+      type="number"
+      placeholder="Width"
+      formControlName="width"
+      [readOnly]="selectedOption !== 4"
+    />
+    <span class="error-message" *ngIf="settingsForm.get('width')?.errors">
+      {{ getError("width") }}
+    </span>
+  </div>
+  <div class="input-container">
+    <label>Height</label>
+    <input
+      required
+      id="height"
+      type="number"
+      placeholder="Height"
+      formControlName="height"
+      [readOnly]="selectedOption !== 4"
+    />
+    <span class="error-message" *ngIf="settingsForm.get('height')?.errors">
+      {{ getError("height") }}
+    </span>
+  </div>
+  <div class="input-container">
+    <label>Mines</label>
+    <input
+      required
+      id="mines"
+      type="number"
+      placeholder="Mines"
+      formControlName="mines"
+      [readOnly]="selectedOption !== 4"
+    />
+    <span class="error-message" *ngIf="settingsForm.get('mines')?.errors">
+      {{ getError("mines") }}
+    </span>
+  </div>
+  <button
+    class="button"
+    [disabled]="selectedOption !== 4 || settingsForm.invalid"
+    (click)="saveSettings()"
+  >
+    Save
+  </button>
+</form>

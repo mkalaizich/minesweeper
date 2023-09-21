@@ -1,0 +1,25 @@
+<div class="finished-games">
+  <table *ngIf="gamesList.length; else emptyMessage">
+    <thead>
+      <tr>
+        <th>Difficulty</th>
+        <th>Status</th>
+        <th>Time</th>
+        <th>Start</th>
+        <th>End</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of gamesList">
+        <td>{{ game.difficulty }}</td>
+        <td>{{ game.win ? "Won" : "Lost" }}</td>
+        <td>{{ game.time | formattedSeconds }}</td>
+        <td>{{ game.start | date : "MM-dd-YYYY hh:mm" }}</td>
+        <td>{{ game.end | date : "MM-dd-YYYY hh:mm" }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyMessage>
+    <h4>There are not recorded games.</h4>
+  </ng-template>
+</div>

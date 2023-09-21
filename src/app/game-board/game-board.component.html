@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="buttons-container">
+    <button (click)="newGame()">New game</button>
+    <button (click)="saveGame()" [disabled]="isGameNotStarted() || gameOver">
+      Save game
+    </button>
+    <button (click)="loadGame()" [disabled]="!savedTable">Load game</button>
+  </div>
+  <div class="board">
+    <div *ngFor="let row of table">
+      <app-cell
+        *ngFor="let cell of row"
+        [cell]="cell"
+        [gameOver]="gameOver"
+        (click)="onClickedCell(cell.col, cell.row)"
+        (contextmenu)="toggleFlagCell($event, cell.col, cell.row)"
+      />
+    </div>
+  </div>
+  <div>
+    <p class="stats">Mines: {{ mines - flags }}</p>
+    <p class="stats">{{ time | formattedSeconds }}</p>
+    <p class="stats" *ngIf="win">YOU WIN</p>
+    <p class="stats" *ngIf="gameOver && !win">GAME OVER</p>
+  </div>
+</div>

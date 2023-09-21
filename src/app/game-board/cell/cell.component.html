@@ -1,0 +1,21 @@
+<div class="cell" *ngIf="cell">
+  <button
+    [disabled]="cell.isOpen || gameOver"
+  >
+  <ng-container *ngIf="cell.isOpen; else elseBlock1">
+      <fa-icon
+        [icon]="faBomb"
+        *ngIf="cell.isMine"
+      ></fa-icon>
+      <span *ngIf="!cell.isMine && cell.minesAround" [style.color]="getColor(cell.minesAround)">{{
+        cell.minesAround
+      }}</span>
+    </ng-container>
+    <ng-template #elseBlock1>
+    <fa-icon
+      [icon]="faFlag"
+      *ngIf="cell.isFlag"
+    ></fa-icon>
+    </ng-template>
+  </button>
+</div>

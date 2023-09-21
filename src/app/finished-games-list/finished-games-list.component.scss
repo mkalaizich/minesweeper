@@ -1,0 +1,18 @@
+.finished-games {
+  display: flex;
+  justify-content: center;
+  table {
+    background-color: #eee;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    th {
+      width: 200px;
+      border: 1px solid #ccc;
+    }
+    td {
+      width: 200px;
+      border: 1px solid #ccc;
+    }
+  }
+}

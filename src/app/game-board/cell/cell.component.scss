@@ -1,0 +1,23 @@
+.cell {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  display: table-cell;
+  height: 24px;
+  width: 24px;
+  button {
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    height: 100%;
+    padding: 5px;
+    width: 100%;
+
+    &:hover:not(:disabled) {
+      background-color: #ddd;
+    }
+    &:disabled {
+      background-color: #ddd;
+    }
+  }
+}
